@@ -13,19 +13,17 @@ int check_cycle(listint_t *list)
 
 	if (list == NULL)
 		return (0);
+	end = ptr->next;
 	while (1)
 	{
-		end = ptr->next;
-		if (end == NULL)
-			return (0);
-		if (ptr == end)
+		if (end == ptr)
 			return (1);
-		ptr = list;
-		while (ptr != end)
-		{
-			if (ptr == end->next)
-				return (1);
-			ptr = ptr->next;
-		}
+		if (end->next == NULL)
+			return (0);
+		end = end->next;
+		if (end->next == NULL)
+			return (0);
+		end = end->next;
+		ptr = ptr->next;
 	}
 }

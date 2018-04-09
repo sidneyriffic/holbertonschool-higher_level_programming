@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "import py_compile
+py_compile.compile(\"$PYFILE\", \"${PYFILE}c\")
+" | python3

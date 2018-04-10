@@ -6,7 +6,7 @@ if number > 5:
           str(number)[-1], "and is greater than 5")
 elif number == 0:
     print("Last digit of", number, "is",
-          str(number)[-1], "and is zero")
+          str(number)[-1], "and is 0")
 else:
     print("Last digit of", number, "is",
-          str(number)[-1], "and is less than 6 and not zero")
+          str(number)[-1], "and is less than 6 and not 0")

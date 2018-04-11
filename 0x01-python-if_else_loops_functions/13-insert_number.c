@@ -1,7 +1,7 @@
 #include "lists.h"
 
 /**
- * insert_node - inserts a node at start of a listint list
+ * insert_node - inserts a node in a sorted listint list
  *
  * @head: start of listint list
  * @number: value to add
@@ -10,15 +10,24 @@
  */
 listint_t *insert_node(listint_t **head, int number)
 {
-	listint_t *ptr;
+	listint_t *new, *ptr;
 
 	if (head == NULL)
 		return (NULL);
-	ptr = malloc(sizeof(listint_t));
-	if (ptr == NULL)
+	new = malloc(sizeof(listint_t));
+	if (new == NULL)
 		return (NULL);
-	ptr->n = number;
-	ptr->next = *head;
-	*head = ptr;
-	return (ptr);
+	ptr = *head;
+	if(ptr != NULL)
+	{
+		while(ptr->next != NULL && ptr->next->n < number)
+			ptr = ptr->next;
+		if (ptr->n >= number)
+			ptr=ptr->next;
+	}
+	new->n = number;
+	new->next = ptr;
+	if (ptr == *head)
+		*head = new;
+	return (new);
 }

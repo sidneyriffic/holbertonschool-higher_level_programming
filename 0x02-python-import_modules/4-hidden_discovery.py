@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 if __name__ == "__main__":
-    import sys
+    import hidden_4.pyc
     for s in dir(sys):
         if s[0] != "_":
             print(s)

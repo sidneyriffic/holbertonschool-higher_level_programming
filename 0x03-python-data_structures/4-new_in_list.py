@@ -5,10 +5,3 @@ def new_in_list(my_list, idx, element):
     listcpy = my_list.copy()
     listcpy[idx] = element
     return listcpy
-my_list = None
-idx = 3
-new_element = 9
-new_list = new_in_list(my_list, idx, new_element)
-
-print(new_list)
-print(my_list)

@@ -28,7 +28,7 @@ listint_t *is_pal_recurs(listint_t *left, listint_t *right)
 
 int is_palindrome(listint_t **head)
 {
-	if (head == NULL || *head == NULL || *head->next == NULL)
+	if (head == NULL || *head == NULL || (*head)->next == NULL)
 		return (1);
 
 	if (is_pal_recurs(*head, *head) != NULL)

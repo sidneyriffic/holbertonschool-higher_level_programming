@@ -7,9 +7,11 @@ listint_t *is_pal_recurs(listint_t *left, listint_t *right)
 	right = right->next;
 	if (right->next == NULL)
 	{
-		if (left->n == left->next->n)
-			return (left->next->next);
-		return (NULL);
+		if (left->n != left->next->n)
+			return (NULL);
+		if (left->next->next == NULL)
+			return (left);
+		return (left->next->next);
 	}
 	right = is_pal_recurs(left->next, right->next);
 	if (right == NULL)

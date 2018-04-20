@@ -29,7 +29,7 @@ void print_python_bytes(PyObject *p)
 		len = 10;
 	printf("  First %d bytes:", len);
 	while (len--)
-		printf(" %.2x", *ptr++);
+		printf(" %.2x", (unsigned char) *ptr++);
 	printf("\n");
 }
 

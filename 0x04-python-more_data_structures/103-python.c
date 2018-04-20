@@ -12,9 +12,17 @@
 void print_python_bytes(PyObject *p)
 {
 	PyBytesObject *bytes = (PyBytesObject *) p;
-	int len = PyBytes_Size(p);
-	char *ptr = bytes->ob_sval;
+	int len;
+	char *ptr;
 
+	printf("[.] bytes object info\n");
+	if (strcmp(p->ob_type->tp_name, "bytes"))
+	{
+		printf("  [ERROR] Invalid Bytes Object\n");
+		return;
+	}
+	len = PyBytes_Size(p);
+	ptr = bytes->ob_sval;
 	printf("size: %d\n trying string: %s\n", len, bytes->ob_sval);
 	len++;
 	if (len > 10)

@@ -23,11 +23,11 @@ void print_python_bytes(PyObject *p)
 	}
 	len = PyBytes_Size(p);
 	ptr = bytes->ob_sval;
-	printf("size: %d\n trying string: %s\n", len, bytes->ob_sval);
+	printf("  size: %d\n  trying string: %s\n", len, bytes->ob_sval);
 	len++;
 	if (len > 10)
 		len = 10;
-	printf("First %d bytes:", len);
+	printf("  First %d bytes:", len);
 	while (len--)
 		printf(" %.2x", *ptr++);
 	printf("\n");

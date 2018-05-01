@@ -7,12 +7,15 @@ def list_division(my_list_1, my_list_2, list_length):
         except TypeError:
             print("wrong type")
             newlist.append(0)
+            continue
         except ArithmeticError:
             print("division by 0")
             newlist.append(0)
+            continue
         except IndexError:
             print("out of range")
             newlist.append(0)
-        finally:
             continue
+        finally:
+            pass
     return newlist

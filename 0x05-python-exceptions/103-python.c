@@ -5,7 +5,7 @@
 void print_python_float(PyObject *p)
 {
 	PyFloatObject *pyfloat = (PyFloatObject *) p;
-	char outstr[32], *ptr;
+	char outstr[1024], *ptr;
 	int hasdec = 0;
 
 	printf("[.] float object info\n");
@@ -15,6 +15,12 @@ void print_python_float(PyObject *p)
 		return;
 	}
 	sprintf(outstr, "  value: %.16g", pyfloat->ob_fval);
+	for (ptr = outstr; *ptr; ptr++)
+		if (*ptr == 'e')
+		{
+			sprintf(outstr, "  value: %f", pyfloat->ob_fval);
+			break;
+		}
 	for (hasdec = 0, ptr = outstr; *ptr; ptr++)
 		if (*ptr == '.')
 		{

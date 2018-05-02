@@ -12,7 +12,7 @@ void print_python_float(PyObject *p)
 		printf("  [ERROR] Invalid Float Object\n");
 		return;
 	}
-	printf("  value: %f\n", pyfloat->ob_fval);
+	printf("  value: %g\n", pyfloat->ob_fval);
 }
 
 /**

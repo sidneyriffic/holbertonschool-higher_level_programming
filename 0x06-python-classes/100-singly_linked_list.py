@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Singly linked list class, in python"""
 
+
 class Node:
     """Node of a singly linked list"""
     def __init__(self, data=0, next_node=None):
@@ -34,6 +35,7 @@ class Node:
             raise TypeError("next_node must be a Node object")
         self.__next_node = value
 
+
 class SinglyLinkedList:
     """SLL head and functions"""
 
@@ -42,7 +44,7 @@ class SinglyLinkedList:
 
     def __repr__(self):
         retstr = ""
-        if self.__head == None:
+        if self.__head is None:
             pass
         else:
             ptr = self.__head

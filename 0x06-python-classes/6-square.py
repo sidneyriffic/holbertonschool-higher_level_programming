@@ -4,7 +4,7 @@
 
 class Square:
     """Square class. Has a size"""
-    def __init__(self, size=0, position=(0,0)):
+    def __init__(self, size=0, position=(0, 0)):
         """Initialize Square"""
         if type(size) is not int:
             raise TypeError("size must be an integer")
@@ -37,7 +37,7 @@ class Square:
 
     @property
     def position(self):
-        return __position
+        return self.__position
 
     @position.setter
     def position(self, value):

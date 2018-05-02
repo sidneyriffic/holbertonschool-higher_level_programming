@@ -15,12 +15,6 @@ void print_python_float(PyObject *p)
 		return;
 	}
 	sprintf(outstr, "  value: %.16g", pyfloat->ob_fval);
-	for (ptr = outstr + 8; *ptr; ptr++)
-		if (*ptr == 'e')
-		{
-			sprintf(outstr, "  value: %f", pyfloat->ob_fval);
-			break;
-		}
 	for (hasdec = 0, ptr = outstr + 8; *ptr; ptr++)
 		if (*ptr == '.')
 		{

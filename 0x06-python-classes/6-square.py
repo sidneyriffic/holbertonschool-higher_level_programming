@@ -13,7 +13,7 @@ class Square:
         if type(position) is not tuple or len(position) != 2 or\
            type(position[0]) is not int or type(position[1]) is not int\
            or position[0] < 0 or position[1] < 0:
-            raise TypeError("position must be a tuple of two positive integers")
+            raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = position
         self.__size = size
 
@@ -58,4 +58,4 @@ class Square:
             string = '#' * self.__size
             margin = ' ' * self.__position[0]
             for x in range(self.__size):
-                print(margin, string)
+                print(margin, string, sep="")

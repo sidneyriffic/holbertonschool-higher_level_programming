@@ -6,7 +6,6 @@ void print_python_float(PyObject *p)
 {
 	PyFloatObject *pyfloat = (PyFloatObject *) p;
 	char *buf;
-	int hasdec = 0;
 
 	printf("[.] float object info\n");
 	if (strcmp(p->ob_type->tp_name, "float"))

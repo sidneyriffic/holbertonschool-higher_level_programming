@@ -14,7 +14,7 @@ void print_python_float(PyObject *p)
 		printf("  [ERROR] Invalid Float Object\n");
 		return;
 	}
-	sprintf(outstr, "  value: %.16g", pyfloat->ob_fval);
+	sprintf(outstr, "  value: %.17g", pyfloat->ob_fval);
 	for (hasdec = 0, ptr = outstr + 8; *ptr; ptr++)
 		if (*ptr == '.')
 		{

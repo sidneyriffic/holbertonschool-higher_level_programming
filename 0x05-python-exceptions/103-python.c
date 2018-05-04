@@ -5,7 +5,7 @@
 void print_python_float(PyObject *p)
 {
 	PyFloatObject *pyfloat = (PyFloatObject *) p;
-	char outstr[1024], *ptr;
+	char *buf;
 	int hasdec = 0;
 
 	printf("[.] float object info\n");
@@ -14,17 +14,10 @@ void print_python_float(PyObject *p)
 		printf("  [ERROR] Invalid Float Object\n");
 		return;
 	}
-	sprintf(outstr, "  value: %.17g", pyfloat->ob_fval);
-	for (hasdec = 0, ptr = outstr + 8; *ptr; ptr++)
-		if (*ptr == '.')
-		{
-			hasdec = 1;
-			break;
-		}
-	printf("%s", outstr);
-	if (!hasdec)
-		printf(".0");
-	printf("\n");
+	buf = PyOS_double_to_string(pyfloat->ob_fval, 'r', 0,
+			      Py_DTSF_ADD_DOT_0, NULL);
+	printf("  value: %s\n", buf);
+	free(buf);
 }
 
 /**

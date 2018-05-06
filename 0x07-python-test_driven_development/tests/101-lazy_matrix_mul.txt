@@ -1,0 +1,195 @@
+Doctest cases for 2-matrix_divided.py
+=====================================
+
+>>> matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+>>> matrix1 = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> matrix2 = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(matrix_mul(matrix1, matrix2),
+...       matrix1, matrix2, sep='\n') #normal case
+[[ 30  36 -36]
+ [-18 -15  36]
+ [-24 -18  54]]
+[[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+[[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+
+>>> matrix1 = [[1.0, 2.0, 3.0], [4.0, 5.0, -6.0], [7.0, 8.0, -9.0]]
+>>> matrix2 = [[1.0, 2.0, 3.0], [4.0, 5.0, -6.0], [7.0, 8.0, -9.0]]
+>>> print(matrix_mul(matrix1, matrix2),
+...       matrix1, matrix2, sep='\n') #normal case
+[[ 30.  36. -36.]
+ [-18. -15.  36.]
+ [-24. -18.  54.]]
+[[1.0, 2.0, 3.0], [4.0, 5.0, -6.0], [7.0, 8.0, -9.0]]
+[[1.0, 2.0, 3.0], [4.0, 5.0, -6.0], [7.0, 8.0, -9.0]]
+
+>>> matrix1 = [[1.0, 2.0, 3.0], [4.0, 5.0, -6.0], [7.0, 8.0, -9.0]]
+>>> matrix2 = [[1.0, 2.0, 3.0, 4], [4.0, 5.0, -6.0, 7], [7.0, 8.0, -9.0, 10]]
+>>> print(matrix_mul(matrix1, matrix2),
+...       matrix1, matrix2, sep='\n') #normal case
+[[ 30.  36. -36.  48.]
+ [-18. -15.  36.  -9.]
+ [-24. -18.  54.  -6.]]
+[[1.0, 2.0, 3.0], [4.0, 5.0, -6.0], [7.0, 8.0, -9.0]]
+[[1.0, 2.0, 3.0, 4], [4.0, 5.0, -6.0, 7], [7.0, 8.0, -9.0, 10]]
+
+>>> matrix1 = [[1.0, 2.0, 3.0], [4.0, 5.0, -6.0],\
+... [7.0, 8.0, -9.0], [10, 11, 12]]
+>>> matrix2 = [[1.0, 2.0, 3.0], [4.0, 5.0, -6.0], [7.0, 8.0, -9.0]]
+>>> print(matrix_mul(matrix1, matrix2),
+...       matrix1, matrix2, sep='\n') #normal case
+[[  30.   36.  -36.]
+ [ -18.  -15.   36.]
+ [ -24.  -18.   54.]
+ [ 138.  171. -144.]]
+[[1.0, 2.0, 3.0], [4.0, 5.0, -6.0], [7.0, 8.0, -9.0], [10, 11, 12]]
+[[1.0, 2.0, 3.0], [4.0, 5.0, -6.0], [7.0, 8.0, -9.0]]
+
+>>> matrix1 = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> matrix2 = [[1, 2, 3], [4, 5, -6]]
+>>> print(matrix_mul(matrix1, matrix2))
+Traceback (most recent call last):
+ValueError: shapes (3,3) and (2,3) not aligned: 3 (dim 1) != 2 (dim 0)
+
+>>> matrix1 = [[1, 2, 3, 4], [4, 5, -6, 5], [7, 8, -9, 6]]
+>>> matrix2 = [[1, 2, 3], [4, 5, -6]]
+>>> print(matrix_mul(matrix1, matrix2))
+Traceback (most recent call last):
+ValueError: shapes (3,4) and (2,3) not aligned: 4 (dim 1) != 2 (dim 0)
+
+>>> matrix1 = [[1]]
+>>> matrix2 = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(matrix_mul(matrix1, matrix2))
+Traceback (most recent call last):
+ValueError: shapes (1,1) and (3,3) not aligned: 1 (dim 1) != 3 (dim 0)
+
+>>> matrix1 = []
+>>> matrix2 = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(matrix_mul(matrix1, matrix2))
+Traceback (most recent call last):
+ValueError: shapes (0,) and (3,3) not aligned: 0 (dim 0) != 3 (dim 0)
+
+>>> matrix2 = []
+>>> matrix1 = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(matrix_mul(matrix1, matrix2))
+Traceback (most recent call last):
+ValueError: shapes (3,3) and (0,) not aligned: 3 (dim 1) != 0 (dim 0)
+
+>>> matrix1 = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> matrix2 = [[1, 2, 3], [4, 5, -6], [7, -9]]
+>>> print(matrix_mul(matrix1, matrix2))
+Traceback (most recent call last):
+ValueError: setting an array element with a sequence.
+
+>>> matrix1 = [[1, 2, 3], [4, 5, -6], [7, 8, -9, 10]]
+>>> matrix2 = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(matrix_mul(matrix1, matrix2))
+Traceback (most recent call last):
+ValueError: setting an array element with a sequence.
+
+>>> matrix1 = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> matrix2 = [[1, 2], [4, 5, -6], [7, 8, -9]]
+>>> print(matrix_mul(matrix1, matrix2))
+Traceback (most recent call last):
+ValueError: setting an array element with a sequence.
+
+>>> matrix1 = [[1, 2, 3], [4, 5, -6, 10], [7, 8, -9]]
+>>> matrix2 = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(matrix_mul(matrix1, matrix2))
+Traceback (most recent call last):
+ValueError: setting an array element with a sequence.
+
+>>> matrix1 = ((1, 2, 3))
+>>> matrix2 = [[1, 2, 3]]
+>>> print(matrix_mul(matrix1, matrix2))
+Traceback (most recent call last):
+ValueError: shapes (3,) and (1,3) not aligned: 3 (dim 0) != 1 (dim 0)
+
+>>> matrix2 = ((1, 2, 3))
+>>> matrix1 = [[1, 2, 3]]
+>>> print(matrix_mul(matrix1, matrix2))
+[14]
+
+>>> matrix1 = None
+>>> matrix2 = [[1, 2, 3]]
+>>> print(matrix_mul(matrix1, matrix2))
+Traceback (most recent call last):
+TypeError: Object arrays are not currently supported
+
+>>> matrix2 = None
+>>> matrix1 = [[1, 2, 3]]
+>>> print(matrix_mul(matrix1, matrix2))
+Traceback (most recent call last):
+TypeError: Object arrays are not currently supported
+
+>>> matrix1 = 3.4
+>>> matrix2 = [[1, 2, 3]]
+>>> print(matrix_mul(matrix1, matrix2))
+Traceback (most recent call last):
+ValueError: Scalar operands are not allowed, use '*' instead
+
+>>> matrix2 = 3.4
+>>> matrix1 = [[1, 2, 3]]
+>>> print(matrix_mul(matrix1, matrix2))
+Traceback (most recent call last):
+ValueError: Scalar operands are not allowed, use '*' instead
+
+>>> matrix1 = 3
+>>> matrix2 = [[1, 2, 3]]
+>>> print(matrix_mul(matrix1, matrix2))
+Traceback (most recent call last):
+ValueError: Scalar operands are not allowed, use '*' instead
+
+>>> matrix2 = 3
+>>> matrix1 = [[1, 2, 3]]
+>>> print(matrix_mul(matrix1, matrix2))
+Traceback (most recent call last):
+ValueError: Scalar operands are not allowed, use '*' instead
+
+>>> matrix1 = [[1, 2, 3], [4, 5, -6], [7, "hi", -9]]
+>>> matrix2 = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(matrix_mul(matrix1, matrix2))
+Traceback (most recent call last):
+TypeError: invalid data type for einsum
+
+>>> matrix2 = [[1, 2, 3], [4, 5, -6], [7, "hi", -9]]
+>>> matrix1 = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(matrix_mul(matrix1, matrix2))
+Traceback (most recent call last):
+TypeError: invalid data type for einsum
+
+>>> matrix1 = [[1, 2, 3], [4, None, -6], [7, 8, -9]]
+>>> matrix2 = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(matrix_mul(matrix1, matrix2))
+Traceback (most recent call last):
+TypeError: Object arrays are not currently supported
+
+>>> matrix2 = [[1, 2, 3], [4, None, -6], [7, 8, -9]]
+>>> matrix1 = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(matrix_mul(matrix1, matrix2))
+Traceback (most recent call last):
+TypeError: Object arrays are not currently supported
+
+>>> matrix1 = [[{1}, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> matrix2 = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(matrix_mul(matrix1, matrix2))
+Traceback (most recent call last):
+TypeError: Object arrays are not currently supported
+
+>>> matrix2 = [[{1}, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> matrix1 = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(matrix_mul(matrix1, matrix2))
+Traceback (most recent call last):
+TypeError: Object arrays are not currently supported
+
+>>> matrix1 = [[[1], 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> matrix2 = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(matrix_mul(matrix1, matrix2))
+Traceback (most recent call last):
+ValueError: setting an array element with a sequence.
+
+>>> matrix2 = [[[1], 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> matrix1 = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(matrix_mul(matrix1, matrix2))
+Traceback (most recent call last):
+ValueError: setting an array element with a sequence.

@@ -42,7 +42,7 @@ class TestMaxInteger(unittest.TestCase):
     def test_duplicate(self):
         """Tests a list with duplicate non-max values"""
         listy = [1, -5, 3, 1, -5]
-        self.assertEqual(max_integer(listy), 1)
+        self.assertEqual(max_integer(listy), 3)
 
     def test_duplicate_max(self):
         """Tests a list with duplicate max and non-max values"""

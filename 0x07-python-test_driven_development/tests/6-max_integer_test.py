@@ -1,11 +1,13 @@
 #!/usr/bin/python3
-"""Unit tests for max_integer() in list function"""
+"""Unit tests for max_integer in list function"""
+
 
 import unittest
 max_integer = __import__('6-max_integer').max_integer
 
+
 class TestMaxInteger(unittest.TestCase):
-    """Class contains unit tests for max_integer()"""
+    """Class contains unit tests for max_integer"""
 
     def test_positive(self):
         """Tests a list with no duplicates"""
@@ -68,7 +70,7 @@ class TestMaxInteger(unittest.TestCase):
         self.assertIs(max_integer(listy), None)
 
     def test_type(self):
-        badtypelist = ["hi", None, {1:2, 2:3}, {1, 2}, (1, 2), 3.4, 3,
+        badtypelist = ["hi", None, {1: 2, 2: 3}, {1, 2}, (1, 2), 3.4, 3,
                        range(5), b"hi"]
         for x in range(len(badtypelist)):
             listy = badtypelist[x]
@@ -77,7 +79,7 @@ class TestMaxInteger(unittest.TestCase):
                     max_integer(listy)
 
     def test_type_element_first(self):
-        badtypelist = ["hi", None, {1:2, 2:3}, {1, 2}, (1, 2), 3.4,
+        badtypelist = ["hi", None, {1: 2, 2: 3}, {1, 2}, (1, 2), 3.4,
                        range(5), b"hi"]
         for x in range(len(badtypelist)):
             listy = [badtypelist[x], 1, -2]
@@ -86,7 +88,7 @@ class TestMaxInteger(unittest.TestCase):
                     max_integer(listy)
 
     def test_type_element_last(self):
-        badtypelist = ["hi", None, {1:2, 2:3}, {1, 2}, (1, 2), 3.4,
+        badtypelist = ["hi", None, {1: 2, 2: 3}, {1, 2}, (1, 2), 3.4,
                        range(5), b"hi"]
         for x in range(len(badtypelist)):
             listy = [1, -2, badtypelist[x]]

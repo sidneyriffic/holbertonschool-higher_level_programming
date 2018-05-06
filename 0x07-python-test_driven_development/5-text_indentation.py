@@ -13,8 +13,8 @@ def text_indentation(text):
         while start < textlen and text[start] == ' ':
             start += 1
         end = start
-        while end < textlen and text[end] != '.' and text[end] != ':'\
-              and text[end] != '?':
+        while (end < textlen and text[end] != '.' and text[end] != ':' and
+               text[end] != '?'):
             end += 1
         if end < textlen:
             end += 1

@@ -1,0 +1,55 @@
+Doctest cases for 2-matrix_divided.py
+=====================================
+
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+>>> matrix = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(matrix_divided(matrix, 2),
+...       matrix, sep='\n') #normal case
+[[0.5, 1.0, 1.5], [2.0, 2.5, -3.0], [3.5, 4.0, -4.5]]
+[[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> matrix = [[1, 2, 3], [-4, 5, 6], [7, -8, 9]]
+>>> print(matrix_divided(matrix, -2)) #second normal case
+[[-0.5, -1.0, -1.5], [2.0, -2.5, -3.0], [-3.5, 4.0, -4.5]]
+>>> print(matrix) #second normal case
+[[1, 2, 3], [-4, 5, 6], [7, -8, 9]]
+>>> matrix = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(matrix_divided(matrix, 3),
+...       matrix, sep='\n') #infinitely repeating number
+[[0.33, 0.67, 1.0], [1.33, 1.67, -2.0], [2.33, 2.67, -3.0]]
+[[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> matrix = [[1, 2, 3], [4, 5]]
+>>> print(matrix_divided(matrix, 1)) #different row sizes
+Traceback (most recent call last):
+TypeError: Each row of the matrix must have the same size
+>>> matrix = [[1, 2, 3], [4, 5, 6, 7]]
+>>> print(matrix_divided(matrix, 1)) #different row sizes 2
+Traceback (most recent call last):
+TypeError: Each row of the matrix must have the same size
+>>> matrix = [[1, 2, 3], [4, 5, 6]]
+>>> print(matrix_divided(matrix, None)) #none div
+Traceback (most recent call last):
+TypeError: div must be a number
+>>> matrix = [[1, 2, 3], [4, 5, 6]]
+>>> print(matrix_divided(matrix, 0)) #0 div
+Traceback (most recent call last):
+ZeroDivisionError: division by zero
+>>> matrix = [[]]
+>>> print(matrix_divided(matrix, 2)) #empty matrix
+[[]]
+>>> matrix = []
+>>> print(matrix_divided(matrix, 2)) #empty list
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+>>> matrix = 3.4
+>>> print(matrix_divided(matrix, 2)) #just a number
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+>>> matrix = [[None]]
+>>> print(matrix_divided(matrix, 2)) #None matrix
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+>>> matrix = [[1, 2, 3], [4, 5, "hi"]]
+>>> print(matrix_divided(matrix, 2)) #string in listlist
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats

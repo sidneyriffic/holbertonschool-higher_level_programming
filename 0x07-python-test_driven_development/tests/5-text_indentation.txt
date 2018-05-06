@@ -1,0 +1,47 @@
+Test cases for 5-text_indentation.py
+====================================
+
+>>> text_indentation = __import__("5-text_indentation").text_indentation
+
+>>> text_indentation("Hello")
+Hello
+
+>>> text_indentation("Hello.")
+Hello.
+<BLANKLINE>
+
+>>> text_indentation("Hello?")
+Hello?
+<BLANKLINE>
+
+>>> text_indentation("Hello:")
+Hello:
+<BLANKLINE>
+
+>>> text_indentation("   Hello.   ")
+Hello.
+<BLANKLINE>
+
+>>> text_indentation(" Hello? ")
+Hello?
+<BLANKLINE>
+
+>>> text_indentation("  Hello:  ")
+Hello:
+<BLANKLINE>
+
+>>> text_indentation(" Hi: Hello?    Hiya. ")
+Hi:
+<BLANKLINE>
+Hello?
+<BLANKLINE>
+Hiya.
+<BLANKLINE>
+
+>>> text_indentation("Hi:Hello?Hiya.")
+Hi:
+<BLANKLINE>
+Hello?
+<BLANKLINE>
+Hiya.
+<BLANKLINE>

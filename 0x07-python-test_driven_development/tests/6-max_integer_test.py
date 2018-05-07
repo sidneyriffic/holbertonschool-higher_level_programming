@@ -64,6 +64,11 @@ class TestMaxInteger(unittest.TestCase):
         listy = [-5000, -5000, -5000, -5000]
         self.assertEqual(max_integer(listy), -5000)
 
+    def test_one_element(self):
+        """Tests a list with all values 5000"""
+        listy = [-5000]
+        self.assertEqual(max_integer(listy), -5000)
+
     def test_empty(self):
         """Tests an empty list"""
         listy = []

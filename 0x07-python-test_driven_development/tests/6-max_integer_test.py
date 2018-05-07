@@ -69,32 +69,5 @@ class TestMaxInteger(unittest.TestCase):
         listy = []
         self.assertIs(max_integer(listy), None)
 
-    def test_type(self):
-        badtypelist = ["hi", None, {1: 2, 2: 3}, {1, 2}, (1, 2), 3.4, 3,
-                       range(5), b"hi"]
-        for x in range(len(badtypelist)):
-            listy = badtypelist[x]
-            with self.subTest(item=badtypelist[x]):
-                with self.assertRaises(TypeError):
-                    max_integer(listy)
-
-    def test_type_element_first(self):
-        badtypelist = ["hi", None, {1: 2, 2: 3}, {1, 2}, (1, 2), 3.4,
-                       range(5), b"hi"]
-        for x in range(len(badtypelist)):
-            listy = [badtypelist[x], 1, -2]
-            with self.subTest(item=badtypelist[x]):
-                with self.assertRaises(TypeError):
-                    max_integer(listy)
-
-    def test_type_element_last(self):
-        badtypelist = ["hi", None, {1: 2, 2: 3}, {1, 2}, (1, 2), 3.4,
-                       range(5), b"hi"]
-        for x in range(len(badtypelist)):
-            listy = [1, -2, badtypelist[x]]
-            with self.subTest(item=badtypelist[x]):
-                with self.assertRaises(TypeError):
-                    max_integer(listy)
-
 if __name__ == "__main__":
     unittest.main()

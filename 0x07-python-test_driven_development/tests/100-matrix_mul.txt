@@ -66,9 +66,21 @@ ValueError: m_a and m_b can't be multiplied
 >>> matrix2 = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
 >>> print(matrix_mul(matrix1, matrix2))
 Traceback (most recent call last):
-ValueError: m_a can't be empty
+TypeError: m_a must be a list of lists
 
 >>> matrix2 = []
+>>> matrix1 = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(matrix_mul(matrix1, matrix2))
+Traceback (most recent call last):
+TypeError: m_b must be a list of lists
+
+>>> matrix1 = [[]]
+>>> matrix2 = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
+>>> print(matrix_mul(matrix1, matrix2))
+Traceback (most recent call last):
+ValueError: m_a can't be empty
+
+>>> matrix2 = [[]]
 >>> matrix1 = [[1, 2, 3], [4, 5, -6], [7, 8, -9]]
 >>> print(matrix_mul(matrix1, matrix2))
 Traceback (most recent call last):

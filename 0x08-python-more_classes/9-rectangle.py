@@ -85,6 +85,4 @@ class Rectangle:
     @classmethod
     def square(cls, size=0):
         """Make a square using the rectangle class"""
-        if type(size) is not int:
-            raise TypeError("size must be an integer")
         return cls(size, size)

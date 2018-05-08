@@ -20,18 +20,10 @@ def nqueens(size):
         for y, x in enumerate(queens[1:], 1):
             print(", [", y, ", ", x, "]", sep="", end="")
         print("]")
-        print("[[0, ", size - queens[0] - 1, "]", sep="", end="")
-        for y, x in enumerate(queens[1:], 1):
-            print(", [", y, ", ", size - x - 1, "]", sep="", end="")
-        print("]")
 
     def queencalc(queen):
         """Recursive call queen position validator"""
-        if queen == 0:
-            rangex = range(int(size / 2) + size % 2)
-        else:
-            rangex = range(size)
-        for x in rangex:
+        for x in range(size):
             """horizontal board positions per queen"""
             nextx = 0
             for y in range(queen):

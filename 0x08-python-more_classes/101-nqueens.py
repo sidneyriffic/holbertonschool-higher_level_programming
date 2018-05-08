@@ -48,7 +48,7 @@ if len(sys.argv) != 2:
     exit()
 try:
     size = int(sys.argv[1])
-except TypeError:
+except (ValueError, TypeError):
     print("N must be a number")
     exit()
 nqueens(size)

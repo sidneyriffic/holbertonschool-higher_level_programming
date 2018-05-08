@@ -14,7 +14,7 @@ class Rectangle:
 
     def __del__(self):
         """Delete a rectangle"""
-        print("Bye rectangle")
+        print("Bye rectangle...")
         if Rectangle.number_of_instances != 0:
             Rectangle.number_of_instances -= 1
 

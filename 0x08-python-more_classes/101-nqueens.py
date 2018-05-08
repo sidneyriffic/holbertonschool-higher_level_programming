@@ -26,7 +26,7 @@ def nqueens(size):
     def queencalc(queen):
         """Recursive call queen position validator"""
         if queen == 0:
-            rangex = range(round(size / 2))
+            rangex = range(int(size / 2) + size % 2)
         else:
             rangex = range(size)
         for x in rangex:

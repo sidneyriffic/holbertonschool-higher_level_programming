@@ -8,9 +8,11 @@ import sys
 def nqueens(size):
     """Initial setup before recursive call"""
     if type(size) is not int:
-        raise TypeError("N must be a number")
+        print("N must be a number")
+        return
     if size < 4:
-        raise ValueError("N must be at least 4")
+        print("N must be at least 4")
+        return
     queens = [0] * size
 
     def printsolution(queens):
@@ -51,8 +53,10 @@ def nqueens(size):
 
 if len(sys.argv) != 2:
     print("Usage: nqueens N")
+    exit()
 try:
     size = int(sys.argv[1])
 except TypeError:
     print("N must be a number")
+    exit()
 nqueens(size)

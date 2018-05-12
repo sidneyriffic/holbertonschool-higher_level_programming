@@ -1,4 +1,4 @@
 #!/usr/bin/python3
-def magic_string(times=0):
-    print("Holberton, " * times + "Holberton")
-    magic_string.times += 1
+def magic_string(listy = []):
+    listy += ["Holberton"]
+    return ", ".join(listy)

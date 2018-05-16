@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines the MyInt class"""
 
+
 class MyInt(int):
     """Integer but with == and != reversed"""
 

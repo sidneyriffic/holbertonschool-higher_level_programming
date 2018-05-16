@@ -1,0 +1,22 @@
+Doctest cases for 0x0A-7: integer validator
+-------------------------------------------
+
+>>> BaseG = __import__("7-base_geometry").BaseGeometry
+>>> a = BaseG()
+>>> ivalid = a.integer_validator
+
+>>> ivalid("my_int", 12)
+
+>>> ivalid("width", 89)
+
+>>> ivalid("", 12)
+
+>>> ivalid("name", "string")
+Traceback (most recent call last):
+TypeError: name must be an integer
+>>> ivalid("x", 0)
+Traceback (most recent call last):
+ValueError: x must be greater than 0
+>>> ivalid("x", -4)
+Traceback (most recent call last):
+ValueError: x must be greater than 0

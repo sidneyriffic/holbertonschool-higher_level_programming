@@ -6,6 +6,8 @@ N sized pascal's triangle"""
 def pascal_triangle(n):
     """Returns a pascal's triangle of size n"""
     triangle = []
+    if n <= 0:
+        return []
     n -= 1
     for row in range(n + 1):
         triangle.append([])

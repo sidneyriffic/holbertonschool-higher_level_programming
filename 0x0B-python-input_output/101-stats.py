@@ -2,13 +2,11 @@
 import sys
 
 
-stdin = sys.stdin
 codes = {}
 totalsize = 0
 linesread = 0
 try:
-    while True:
-        line = stdin.readline()
+    for line in sys.stdin:
         line = line.split(" ")
         if line[-2] in codes:
             codes[line[-2]] += 1

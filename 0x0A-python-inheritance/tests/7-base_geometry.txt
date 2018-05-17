@@ -11,7 +11,39 @@ Doctest cases for 0x0A-7: integer validator
 
 >>> ivalid("", 12)
 
+>>> a.area()
+Traceback (most recent call last):
+Exception: area() is not implemented
+
+>>> ivalid()
+Traceback (most recent call last):
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+>>> ivalid(50)
+Traceback (most recent call last):
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+>>> ivalid("", 12)
+
 >>> ivalid("name", "string")
+Traceback (most recent call last):
+TypeError: name must be an integer
+>>> ivalid("name", None)
+Traceback (most recent call last):
+TypeError: name must be an integer
+>>> ivalid("name", {3, 1})
+Traceback (most recent call last):
+TypeError: name must be an integer
+>>> ivalid("name", ())
+Traceback (most recent call last):
+TypeError: name must be an integer
+>>> ivalid("name", [])
+Traceback (most recent call last):
+TypeError: name must be an integer
+>>> ivalid("name", True)
+Traceback (most recent call last):
+TypeError: name must be an integer
+>>> ivalid("name", 3.5)
 Traceback (most recent call last):
 TypeError: name must be an integer
 >>> ivalid("x", 0)

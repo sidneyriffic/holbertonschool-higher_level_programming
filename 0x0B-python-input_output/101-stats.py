@@ -17,8 +17,8 @@ try:
         if linesread % 10 == 0:
             print("File size:", totalsize)
             for code in codes:
-                print("{}: {}\n".format(code, codes[code]))
+                print("{}: {}".format(code, codes[code]))
 except KeyboardInterrupt:
     print("File size:", totalsize)
     for code in codes:
-        print("{}: {}\n".format(code, codes[code]))
+        print("{}: {}".format(code, codes[code]))

@@ -18,7 +18,7 @@ try:
             print("File size:", totalsize)
             for code in sorted(list(codes)):
                 print("{}: {}".format(code, codes[code]))
-except KeyboardInterrupt:
+finally:
     print("File size:", totalsize)
     for code in sorted(list(codes)):
         print("{}: {}".format(code, codes[code]))

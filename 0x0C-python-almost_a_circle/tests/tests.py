@@ -77,6 +77,10 @@ class TestBase(unittest.TestCase):
         self.assertEqual(json.dumps([dicty, dicty]),
                          Base.to_json_string([dicty, dicty]))
 
+    def testtojsonempty(self):
+        """Test Base to_json_string class method with empty list of dicts"""
+        self.assertEqual("[]", Base.to_json_string([]))
+
     def testfromjson(self):
         """Test Base from_json_string class method. JSON to dict"""
         dicty = {"id": 5, "class": "string", "list": [], "set": {}}
@@ -89,6 +93,28 @@ class TestBase(unittest.TestCase):
         dicty = {"id": 5, "class": "string", "list": [], "set": {}}
         self.assertEqual([dicty, dicty],
                          Base.from_json_string(json.dumps([dicty, dicty])))
+
+    def testdicttorect(self):
+        """Test making a rectangle from a dict"""
+        dicty = {"id": 5, "width": 3, "height": 4, "x": 2, "y": 1}
+        a = Rectangle(3, 4, 2, 1, 5)
+        b = Rectangle.create(**dicty)
+        self.assertEqual(a.id, b.id)
+        self.assertEqual(a.width, b.width)
+        self.assertEqual(a.height, b.height)
+        self.assertEqual(a.x, b.x)
+        self.assertEqual(a.y, b.y)
+
+    def testdicttosq(self):
+        """Test making a Square from a dict"""
+        dicty = {"id": 5, "size": 3, "x": 2, "y": 1}
+        a = Square(3, 2, 1, 5)
+        b = Square.create(**dicty)
+        self.assertEqual(a.id, b.id)
+        self.assertEqual(a.width, b.width)
+        self.assertEqual(a.height, b.height)
+        self.assertEqual(a.x, b.x)
+        self.assertEqual(a.y, b.y)
 
 #test fewer args to inits
 class TestRectangle(unittest.TestCase):

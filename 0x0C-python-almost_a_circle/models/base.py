@@ -83,7 +83,6 @@ class Base:
         listcpy = list_objs.copy()
         for idx in range(len(listcpy)):
             listcpy[idx] = listcpy[idx].to_dictionary()
-        print(cls)
         if cls is Rectangle:
             with open("Rectangle.csv", "w") as f:
                 csvwriter = csv.writer(f)

@@ -48,10 +48,10 @@ class Base:
             list_objs[idx] = list_objs[idx].to_dictionary()
         if cls is Rectangle:
             with open("Rectangle.json", "w") as f:
-                json.dump(list_objs, f)
+                f.write(Base.to_json_string(list_objs))
         elif cls is Square:
             with open("Square.json", "w") as f:
-                json.dump(list_objs, f)
+                f.write(Base.to_json_string(list_objs))
 
     @classmethod
     def load_from_file(cls):

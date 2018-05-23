@@ -46,7 +46,6 @@ class Base:
         from .square import Square
         for idx in range(len(list_objs)):
             list_objs[idx] = list_objs[idx].to_dictionary()
-        print(list_objs)
         if cls is Rectangle:
             with open("Rectangle.json", "w") as f:
                 json.dump(list_objs, f)

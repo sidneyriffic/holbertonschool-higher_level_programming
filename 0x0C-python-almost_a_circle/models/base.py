@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Base geometry class"""
 import json
+import csv
 
 
 class Base:
@@ -73,4 +74,57 @@ class Base:
                     return []
                 for idx in range(len(retlist)):
                     retlist[idx] = Square.create(**retlist[idx])
+                return retlist
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        from .rectangle import Rectangle
+        from .square import Square
+        listcpy = list_objs.copy()
+        for idx in range(len(listcpy)):
+            listcpy[idx] = listcpy[idx].to_dictionary()
+        print(cls)
+        if cls is Rectangle:
+            with open("Rectangle.csv", "w") as f:
+                csvwriter = csv.writer(f)
+                for dicty in listcpy:
+                    newlist = []
+                    newlist.append(dicty["id"])
+                    newlist.append(dicty["width"])
+                    newlist.append(dicty["height"])
+                    newlist.append(dicty["x"])
+                    newlist.append(dicty["y"])
+                    csvwriter.writerow(newlist)
+        if cls is Square:
+            with open("Square.csv", "w") as f:
+                csvwriter = csv.writer(f)
+                for dicty in listcpy:
+                    newlist = []
+                    newlist.append(dicty["id"])
+                    newlist.append(dicty["size"])
+                    newlist.append(dicty["x"])
+                    newlist.append(dicty["y"])
+                    csvwriter.writerow(newlist)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        from .rectangle import Rectangle
+        from .square import Square
+        if cls is Rectangle:
+            with open("Rectangle.csv", "r") as f:
+                csvreader = csv.reader(f)
+                retlist = []
+                for row in csvreader:
+                    newrect = Rectangle(int(row[1]), int(row[2]), int(row[3]),
+                                        int(row[4]), row[0])
+                    retlist.append(newrect)
+                return retlist
+        elif cls is Square:
+            with open("Square.csv", "r") as f:
+                csvreader = csv.reader(f)
+                retlist = []
+                for row in csvreader:
+                    newsquare = Square(int(row[1]), int(row[2]),
+                                       int(row[3]), row[0])
+                    retlist.append(newsquare)
                 return retlist

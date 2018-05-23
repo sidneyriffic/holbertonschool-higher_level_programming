@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Unittest module for Base, Square and Rectangle classes"""
 import unittest
+import json
 from io import StringIO
 from contextlib import redirect_stdout
 from models.base import Base
@@ -64,6 +65,30 @@ class TestBase(unittest.TestCase):
         b = Base(blist)
         self.assertEqual(a.id, astr)
         self.assertEqual(b.id, blist)
+
+    def testtojson(self):
+        """Test Base to_json_string class method"""
+        dicty = {"id": 5, "class": "string", "list": [], "set": {}}
+        self.assertEqual(json.dumps([dicty]), Base.to_json_string([dicty]))
+
+    def testtojson2(self):
+        """Test Base to_json_string class method with multiple dicts"""
+        dicty = {"id": 5, "class": "string", "list": [], "set": {}}
+        self.assertEqual(json.dumps([dicty, dicty]),
+                         Base.to_json_string([dicty, dicty]))
+
+    def testfromjson(self):
+        """Test Base from_json_string class method. JSON to dict"""
+        dicty = {"id": 5, "class": "string", "list": [], "set": {}}
+        self.assertEqual([dicty], Base.from_json_string(json.dumps([dicty])))
+
+    def testfromjson(self):
+        """Test Base from_json_string class method. 
+        Multiple dicts. JSON to dict.
+        """
+        dicty = {"id": 5, "class": "string", "list": [], "set": {}}
+        self.assertEqual([dicty, dicty],
+                         Base.from_json_string(json.dumps([dicty, dicty])))
 
 #test fewer args to inits
 class TestRectangle(unittest.TestCase):
@@ -243,6 +268,12 @@ class TestRectangle(unittest.TestCase):
         a.update(11, 5, 6, 15, 12, [], "hello", ())
         self.assertEqual(str(a), "[Rectangle] (11) 15/12 - 5/6")
 
+    def testtodict(self):
+        """Tests rectangle to dictionary function"""
+        a = Rectangle(4, 3, 6, 7, 3)
+        dictcomp = {"id": 3, "width": 4, "height": 3, "x": 6, "y": 7}
+        self.assertEqual(a.to_dictionary(), dictcomp)
+
 #test fewer args to inits
 class TestSquare(unittest.TestCase):
     """Tests the square class"""
@@ -396,3 +427,9 @@ class TestSquare(unittest.TestCase):
         a = Square(4, 6, 7, 3)
         a.update(11, 5, 15, 12, [], "hello", ())
         self.assertEqual(str(a), "[Square] (11) 15/12 - 5")
+
+    def testtodict(self):
+        """Tests rectangle to dictionary function"""
+        a = Square(4, 6, 7, 3)
+        dictcomp = {"id": 3, "size": 4, "x": 6, "y": 7}
+        self.assertEqual(a.to_dictionary(), dictcomp)

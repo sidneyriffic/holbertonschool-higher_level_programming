@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """Unittest module for Base, Square and Rectangle classes"""
 import unittest
+from io import StringIO
+from contextlib import redirect_stdout
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
@@ -190,6 +192,57 @@ class TestRectangle(unittest.TestCase):
         a = Rectangle(4, 5, 100, 20, 10)
         self.assertEqual(a.area(), 20)
 
+    def testprint(self):
+        """Tests printing a basic rectangle"""
+        global idct
+        a = Rectangle(4, 3)
+        idct += 1
+        out = StringIO()
+        with redirect_stdout(out):
+            a.display()
+        self.assertEqual(out.getvalue(), "####\n####\n####\n")
+
+    def testprint2(self):
+        """Tests printing a rectangle with offset"""
+        a = Rectangle(4, 3, 3, 4, 10)
+        out = StringIO()
+        with redirect_stdout(out):
+            a.display()
+        self.assertEqual(out.getvalue(), "\n\n\n\n   ####\n   ####\n   ####\n")
+        
+
+    def teststr(self):
+        """Tests stringing a basic rectangle"""
+        global idct
+        a = Rectangle(4, 3)
+        idct += 1
+        self.assertEqual(str(a), "[Rectangle] ({}) 0/0 - 4/3".format(idct))
+
+    def teststr2(self):
+        """Tests stringing a rectangle with offset"""
+        a = Rectangle(4, 3, 6, 7, 3)
+        self.assertEqual(str(a), "[Rectangle] (3) 6/7 - 4/3")
+
+    def testupdate(self):
+        """Tests rectangle update function with positional args"""
+        a = Rectangle(4, 3, 6, 7, 3)
+        a.update(10)
+        self.assertEqual(str(a), "[Rectangle] (10) 6/7 - 4/3")
+        a.update(11, 5)
+        self.assertEqual(str(a), "[Rectangle] (11) 6/7 - 5/3")
+        a.update(11, 5, 6)
+        self.assertEqual(str(a), "[Rectangle] (11) 6/7 - 5/6")
+        a.update(11, 5, 6, 15)
+        self.assertEqual(str(a), "[Rectangle] (11) 15/7 - 5/6")
+        a.update(11, 5, 6, 15, 12)
+        self.assertEqual(str(a), "[Rectangle] (11) 15/12 - 5/6")
+
+    def testupdatetoomany(self):
+        """Test rectangle update function with extra args"""
+        a = Rectangle(4, 3, 6, 7, 3)
+        a.update(11, 5, 6, 15, 12, [], "hello", ())
+        self.assertEqual(str(a), "[Rectangle] (11) 15/12 - 5/6")
+
 #test fewer args to inits
 class TestSquare(unittest.TestCase):
     """Tests the square class"""
@@ -295,3 +348,51 @@ class TestSquare(unittest.TestCase):
         """tests rectangle area function"""
         a = Square(4, 100, 20, 10)
         self.assertEqual(a.area(), 16)
+
+    def testprint(self):
+        """Tests printing a basic square"""
+        global idct
+        a = Square(3)
+        idct += 1
+        out = StringIO()
+        with redirect_stdout(out):
+            a.display()
+        self.assertEqual(out.getvalue(), "###\n###\n###\n")
+
+    def testprint2(self):
+        """Tests printing a square with offset"""
+        a = Square(3, 3, 4, 10)
+        out = StringIO()
+        with redirect_stdout(out):
+            a.display()
+        self.assertEqual(out.getvalue(), "\n\n\n\n   ###\n   ###\n   ###\n")
+ 
+    def teststr(self):
+        """Tests stringing a basic square"""
+        global idct
+        a = Square(4)
+        idct += 1
+        self.assertEqual(str(a), "[Square] ({}) 0/0 - 4".format(idct))
+
+    def teststr2(self):
+        """Tests stringing a rectangle with offset"""
+        a = Square(4, 6, 7, 3)
+        self.assertEqual(str(a), "[Square] (3) 6/7 - 4")
+
+    def testupdate(self):
+        """Tests square update function with positional args"""
+        a = Square(4, 6, 7, 3)
+        a.update(10)
+        self.assertEqual(str(a), "[Square] (10) 6/7 - 4")
+        a.update(11, 12)
+        self.assertEqual(str(a), "[Square] (11) 6/7 - 12")
+        a.update(11, 12, 3)
+        self.assertEqual(str(a), "[Square] (11) 3/7 - 12")
+        a.update(11, 12, 3, 9)
+        self.assertEqual(str(a), "[Square] (11) 3/9 - 12")
+
+    def testupdatetoomany(self):
+        """Tests square update function with extra positional args"""
+        a = Square(4, 6, 7, 3)
+        a.update(11, 5, 15, 12, [], "hello", ())
+        self.assertEqual(str(a), "[Square] (11) 15/12 - 5")

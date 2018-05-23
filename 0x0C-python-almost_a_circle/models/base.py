@@ -33,11 +33,11 @@ class Base:
         from .rectangle import Rectangle
         from .square import Square
         if cls is Rectangle:
-            newrect = Rectangle(1, 1)
+            newrect = Rectangle(1, 1, 0, 0, 0)
             newrect.update(**dictionary)
             return newrect
         elif cls is Square:
-            newsquare = Square(1)
+            newsquare = Square(1, 0, 0, 0)
             newsquare.update(**dictionary)
             return newsquare
 

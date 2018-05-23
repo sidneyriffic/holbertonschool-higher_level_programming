@@ -44,14 +44,15 @@ class Base:
     def save_to_file(cls, list_objs):
         from .rectangle import Rectangle
         from .square import Square
-        for idx in range(len(list_objs)):
-            list_objs[idx] = list_objs[idx].to_dictionary()
+        listcpy = list_objs.copy()
+        for idx in range(len(listcpy)):
+            listcpy[idx] = listcpy[idx].to_dictionary()
         if cls is Rectangle:
             with open("Rectangle.json", "w") as f:
-                f.write(Base.to_json_string(list_objs))
+                f.write(Base.to_json_string(listcpy))
         elif cls is Square:
             with open("Square.json", "w") as f:
-                f.write(Base.to_json_string(list_objs))
+                f.write(Base.to_json_string(listcpy))
 
     @classmethod
     def load_from_file(cls):
@@ -59,13 +60,17 @@ class Base:
         from .square import Square
         if cls is Rectangle:
             with open("Rectangle.json", "r") as f:
-                retlist = json.load(f)
+                retlist = Base.from_json_string(f.read())
                 if retlist == "":
                     return []
+                for idx in range(len(retlist)):
+                    retlist[idx] = Rectangle.create(**retlist[idx])
                 return retlist
         elif cls is Square:
             with open("Square.json", "r") as f:
-                retlist = json.load(f)
+                retlist = Base.from_json_string(f.read())
                 if retlist == "":
                     return []
+                for idx in range(len(retlist)):
+                    retlist[idx] = Square.create(**retlist[idx])
                 return retlist

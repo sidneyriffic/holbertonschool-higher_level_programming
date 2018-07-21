@@ -1,33 +1,16 @@
 #!/usr/bin/python3
-"""Select all states in hbtn_0e_0_usa"""
+#List all states using mysqldb
 
 
 if __name__ == "__main__":
-    from sqlalchemy import Integer, String, create_engine, Column
-    from sqlalchemy.ext.declarative import declarative_base
-    from sqlalchemy.orm import sessionmaker
     import MySQLdb
     from sys import argv
 
 
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.
-                           format(argv[1], argv[2], argv[3]),
-                           pool_pre_ping=True)
-    Base = declarative_base()
-    Base.metadata.create_all(engine)
+    db = MySQLdb.connect(host="localhost", user=argv[1],
+                         passwd=argv[2], db=argv[3])
 
-
-    class State(Base):
-        """Class to states table"""
-        __tablename__ = "states"
-
-        id = Column(Integer, primary_key=True)
-        name = Column(String)
-
-
-    Session = sessionmaker(bind=engine)
-
-    session = Session()
-    for state in session.query(State).order_by(State.id).all():
-        print("({}, '{}')".format(state.id, state.name))
-    session.close()
+    cur = db.cursor()
+    cur.execute("SELECT id, name FROM states")
+    for row in cur.fetchall():
+        print("({}, '{}')".format(row[0], row[1]))

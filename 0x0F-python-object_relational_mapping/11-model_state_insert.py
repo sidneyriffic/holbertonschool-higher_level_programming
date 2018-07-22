@@ -17,7 +17,7 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
     session.add(State(name=argv[4]))
+    session.commit()
     qry = session.query(State).filter(State.name ==
                                       func.binary(argv[4])).first()
-    session.commit()
     print("{}".format(qry.id))

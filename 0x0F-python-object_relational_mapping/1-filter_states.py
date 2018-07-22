@@ -11,6 +11,7 @@ if __name__ == "__main__":
 
     cur = db.cursor()
     cur.execute("SELECT id, name FROM states "
-                "WHERE SUBSTR(name, 1, 1)='N' ORDER BY id")
+                "WHERE SUBSTR(name, 1, 1)='N' COLLATE latin1_general_cs "
+                "ORDER BY id")
     for row in cur.fetchall():
         print("({}, '{}')".format(row[0], row[1]))

@@ -18,7 +18,7 @@ if __name__ == "__main__":
     session = Session()
     qry = session.query(State).filter(State.name == func.binary(argv[4]))
     if len(qry.all()) == 0:
-        print("Nothing")
+        print("Not Found")
     else:
         for row in qry:
             print("{}".format(row.id))

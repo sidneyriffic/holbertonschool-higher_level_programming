@@ -10,7 +10,7 @@ if __name__ == "__main__":
                          passwd=argv[2], db=argv[3])
 
     cur = db.cursor()
-    cur.execute("SELECT id, name FROM states "
-                "WHERE name=%s ORDER BY id", (argv[4],))
+    cur.execute("SELECT id, name FROM states WHERE name=%s "
+                "COLLATE latin1_general_cs ORDER BY id", (argv[4],))
     for row in cur.fetchall():
         print("({}, '{}')".format(row[0], row[1]))

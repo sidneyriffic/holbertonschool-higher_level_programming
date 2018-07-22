@@ -12,5 +12,6 @@ if __name__ == "__main__":
     cur = db.cursor()
     cur.execute("SELECT cities.name FROM cities"
                 " JOIN states ON states.id=cities.state_id "
-                "WHERE states.name=%s ORDER BY cities.id", (argv[4],))
+                "WHERE states.name=%s COLLATE latin1_general_cs "
+                "ORDER BY cities.id", (argv[4],))
     print(", ".join([x[0] for x in cur.fetchall()]))

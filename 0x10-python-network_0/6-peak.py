@@ -7,9 +7,9 @@ def find_peak(list_of_integers):
 
     if len(list_of_integers) == 0:
         return None
-    peak = list_of_integers[0]
-    for num in list_of_integers:
-        if num < peak:
-            return peak
-        peak = num
-    return peak
+    if len(list_of_integers) == 1:
+        return list_of_integers[0]
+    if list_of_integers[0] > list_of_integers[len(list_of_integers) - 1]:
+        return find_peak(list_of_integers[:(len(list_of_integers) + 1)//2])
+    else:
+        return find_peak(list_of_integers[(len(list_of_integers))//2:])

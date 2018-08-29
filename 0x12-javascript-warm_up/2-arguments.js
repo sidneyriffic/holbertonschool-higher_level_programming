@@ -5,7 +5,7 @@ switch (process.argv.length) {
     console.log('No arguments');
     break;
   case 3:
-    console.log('Arugument found');
+    console.log('Argument found');
     break;
   default:
     console.log('Arguments found');

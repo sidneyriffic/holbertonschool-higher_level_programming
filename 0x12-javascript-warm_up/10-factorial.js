@@ -1,13 +1,13 @@
 #!/usr/bin/node
 
-let factorial = parseInt(process.argv[2]);
+let number = parseInt(process.argv[2]);
 
-if (!factorial) {
-  console.log('1');
-} else {
-  let total = 1;
-  while (factorial > 1) {
-    total = total * factorial--;
+function factorial (num) {
+  if (num > 1) {
+    return num * (num - 1);
+  } else {
+    return 1;
   }
-  console.log(total);
 }
+
+console.log(factorial(number));

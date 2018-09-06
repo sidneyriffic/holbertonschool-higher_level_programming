@@ -8,7 +8,11 @@ request(process.argv[2], function (err, res, body) {
     let wedgefilms = 0;
     let films = JSON.parse(body).results;
     for (let film in films) {
-      if (films[film].characters.indexOf('https://swapi.co/api/people/18/') > -1) wedgefilms++;
+      characters = films[film].characters;
+      for (let character in characters) {
+	console.log(characters[character]);
+	if (characters[character].search(/18\/$/) > -1) wedgefilms++;
+      }
     }
     console.log(wedgefilms);
   }

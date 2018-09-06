@@ -18,7 +18,7 @@ function callsearch (oauthkey) {
   };
 
   request.get(searchoptions, function (err, res, body) {
-    if (err) console.log(err);
+    if (err) console.log('error', err);
     else {
       let results = JSON.parse(body);
       for (let result in results.statuses) {
@@ -41,7 +41,7 @@ let options = {
 request.post(options, function (err, res, body) {
   if (err) console.log(err);
   else {
-    if (res.statusCode === '200') {
+    if (res.statusCode === 200) {
       callsearch(JSON.parse(body).access_token);
     }
   }

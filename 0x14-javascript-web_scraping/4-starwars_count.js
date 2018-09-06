@@ -8,9 +8,9 @@ request(process.argv[2], function (err, res, body) {
     let wedgefilms = 0;
     let films = JSON.parse(body).results;
     for (let film in films) {
-      characters = films[film].characters;
+      let characters = films[film].characters;
       for (let character in characters) {
-	if (characters[character].search(/18\/$/) > -1) wedgefilms++;
+        if (characters[character].search(/18\/$/) > -1) wedgefilms++;
       }
     }
     console.log(wedgefilms);

@@ -10,7 +10,6 @@ request(process.argv[2], function (err, res, body) {
     for (let film in films) {
       characters = films[film].characters;
       for (let character in characters) {
-	console.log(characters[character]);
 	if (characters[character].search(/18\/$/) > -1) wedgefilms++;
       }
     }
